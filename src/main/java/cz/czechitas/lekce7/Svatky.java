@@ -50,7 +50,7 @@ public class Svatky {
         svatky.put("Maxim", MonthDay.of(5, 29));
         svatky.put("Ferdinand", MonthDay.of(5, 30));
         svatky.put("Kamila", MonthDay.of(5, 31));
-    }
+            }
 
     /**
      * Vrací den, kdy má zadané jméno svátek.
@@ -59,8 +59,8 @@ public class Svatky {
      * @return Den a měsíc, případně {@code null}, pokud jméno nebylo nalezeno.
      */
     public MonthDay vratKdyMaSvatek(String jmeno) {
-        //TODO
-        return null;
+        //
+        return svatky.get(jmeno);
     }
 
     /**
@@ -70,9 +70,27 @@ public class Svatky {
      * @return {@code true}, pokud je jméno v seznamu. Jinak vrací {@code false}.
      */
     public boolean jeVSeznamu(String jmeno) {
-        //TODO
-        return false;
+        //chtěla bych doplnit o slovní vyjádření - ano ne pro bolean
+
+        return svatky.containsKey(jmeno);
     }
+
+    /**
+     * "Přeložení" boolean jeVSeznamu na slovní vyjádření "je/není v seznamu".
+     *
+     * @param jmeno Jméno, které bude vyhledáno v seznamu svátků.
+     * @return Vrátí slovní popis, zda je jméno v seznamu.
+     * @see Svatky#jeVSeznamu
+     */
+    public String jeVSeznamuToString(String jmeno) {
+        if (jeVSeznamu(jmeno)) {
+            return "je v seznamu";
+
+        } else {
+            return "není v seznamu";
+        }
+    }
+
 
     /**
      * Vrací počet jmen uvedených v seznamu.
@@ -80,8 +98,7 @@ public class Svatky {
      * @return
      */
     public int getPocetJmen() {
-        //TODO
-        return 0;
+        return svatky.size();
     }
 
     /**
@@ -90,8 +107,8 @@ public class Svatky {
      * @return Neseřazený seznam jmen.
      */
     public Set<String> getSeznamJmen() {
-        //TODO
-        return null;
+        //
+        return svatky.keySet();
     }
 
     /**
@@ -101,7 +118,8 @@ public class Svatky {
      * @param denMesic Den a měsíc, kdy má dané jméno svátek.
      */
     public void pridejSvatek(String jmeno, MonthDay denMesic) {
-        //TODO
+        //
+        svatky.put(jmeno, denMesic);
     }
 
     /**
@@ -112,7 +130,8 @@ public class Svatky {
      * @param mesic Měsíc, kdy má dané jméno svátek (1–12).
      */
     public void pridejSvatek(String jmeno, int den, int mesic) {
-        //TODO
+        //
+        pridejSvatek(jmeno, MonthDay.of(mesic, den));
     }
 
     /**
@@ -123,7 +142,8 @@ public class Svatky {
      * @param mesic Měsíc, kdy má dané jméno svátek.
      */
     public void pridejSvatek(String jmeno, int den, Month mesic) {
-        //TODO
+        //
+        svatky.put(jmeno, MonthDay.of(mesic,den));
     }
 
     /**
@@ -132,6 +152,7 @@ public class Svatky {
      * @param jmeno Jméno ke smazání.
      */
     public void smazSvatek(String jmeno) {
-        //TODO
+        //
+        svatky.remove(jmeno);
     }
 }
